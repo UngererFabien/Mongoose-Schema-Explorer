@@ -1,0 +1,26 @@
+{
+  "name": "mongoose-schema-explorer",
+  "version": "1.0.0",
+  "description": "Schema dependencies visualisation explorer for mongoose",
+  "main": "index.js",
+  "scripts": {
+    "viz": "http-server ./dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UngererFabien/Mongoose-Schema-Explorer.git"
+  },
+  "author": "leray.jul@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UngererFabien/Mongoose-Schema-Explorer/issues"
+  },
+  "homepage": "https://github.com/UngererFabien/Mongoose-Schema-Explorer#readme",
+  "devDependencies": {
+    "http-server": "^0.11.1"
+  },
+  "dependencies": {
+    "d3": "^5.1.0"
+  }
+}
