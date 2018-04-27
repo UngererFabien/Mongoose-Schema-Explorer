@@ -1,41 +1,53 @@
-const _ = require("lodash");
+const fs = require("fs");
 
 module.exports = function(mongoose) {
 	let schemas = mongoose.modelSchemas;
-	let schemasKeys = _.keys(schemas);
+	let schemasKeys = Object.keys(schemas);
 	//console.log("schemasKeys: ", schemasKeys);
 
-	console.log(
-		"SCHEMA building: ",
-		JSON.stringify(schemas.building.tree, null, "\t")
-	);
+	// console.log(
+	// 	"SCHEMA building: ",
+	// 	JSON.stringify(schemas.building.tree, null, "\t")
+	// );
 
-	let results = [
-		{
-			schema: "building"
-		}
-	];
+	console.log(JSON.stringify(schemas.lease.obj));
 
-	schemasKeys.forEach(e => {
-		let schema = schemas[e].obj;
+	let hierarchy = schemasKeys.map(schemaName => {
+		let schema = schemas[schemaName].obj;
 
-		if (Array.isArray(schema)) {
-			root = root[0];
-		}
+		let imports = exploreLevel(schema);
 
-		console.log(schema);
+		return {
+			name: schemaName,
+			size: 1,
+			imports: [...new Set(imports)]
+		};
 	});
+
+	fs.writeFile(
+		__dirname + "/data/hierarchy.json",
+		JSON.stringify(hierarchy, null, 4),
+		{},
+		err => {
+			console.log("Mongoose hierarchy saved.");
+		}
+	);
 };
 
-function exploreLevel(root) {
-	if (Array.isArray(root)) {
-		root = root[0];
+function exploreLevel(level) {
+	if (Array.isArray(level)) {
+		level = level[0];
 	}
 
-	_.forOwn(root, (val, key) => {});
-}
+	let levelImports = [];
 
-//{} || [{}] || [null] || field
-function isReference(val) {
-	if (val.ref) return val.ref;
+	if (level && typeof level == "object") {
+		if (!level.ref) {
+			for (var key in level) {
+				levelImports.push(...exploreLevel(level[key]));
+			}
+		} else levelImports.push(level.ref);
+	}
+
+	return levelImports;
 }

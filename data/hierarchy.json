@@ -1,0 +1,202 @@
+[
+    {
+        "name": "user_client",
+        "size": 1,
+        "imports": []
+    },
+    {
+        "name": "user_provider",
+        "size": 1,
+        "imports": []
+    },
+    {
+        "name": "user_manager",
+        "size": 1,
+        "imports": []
+    },
+    {
+        "name": "client",
+        "size": 1,
+        "imports": [
+            "client",
+            "user_client",
+            "manager",
+            "lot",
+            "ticket"
+        ]
+    },
+    {
+        "name": "manager",
+        "size": 1,
+        "imports": [
+            "user_manager",
+            "agency"
+        ]
+    },
+    {
+        "name": "provider",
+        "size": 1,
+        "imports": [
+            "user_provider",
+            "company",
+            "ticket",
+            "quotation"
+        ]
+    },
+    {
+        "name": "event",
+        "size": 1,
+        "imports": [
+            "client",
+            "building",
+            "lot",
+            "ticket"
+        ]
+    },
+    {
+        "name": "building",
+        "size": 1,
+        "imports": [
+            "condo_mandate",
+            "client",
+            "manager",
+            "providers",
+            "chargeDistributionRule",
+            "lot"
+        ]
+    },
+    {
+        "name": "ticket",
+        "size": 1,
+        "imports": [
+            "user",
+            "manager",
+            "building"
+        ]
+    },
+    {
+        "name": "agency",
+        "size": 1,
+        "imports": [
+            "tenure",
+            "condoMandates",
+            "rentalMandates",
+            "client",
+            "manager"
+        ]
+    },
+    {
+        "name": "quotation",
+        "size": 1,
+        "imports": [
+            "ticket",
+            "client",
+            "provider"
+        ]
+    },
+    {
+        "name": "bill",
+        "size": 1,
+        "imports": [
+            "ticket",
+            "client",
+            "provider"
+        ]
+    },
+    {
+        "name": "company",
+        "size": 1,
+        "imports": [
+            "user",
+            "provider"
+        ]
+    },
+    {
+        "name": "callforbids",
+        "size": 1,
+        "imports": [
+            "ticket",
+            "provider"
+        ]
+    },
+    {
+        "name": "evaluation",
+        "size": 1,
+        "imports": [
+            "bill",
+            "ticket",
+            "user_manager",
+            "provider"
+        ]
+    },
+    {
+        "name": "order",
+        "size": 1,
+        "imports": [
+            "provider",
+            "client",
+            "manager",
+            "ticket"
+        ]
+    },
+    {
+        "name": "quotationscomparison",
+        "size": 1,
+        "imports": [
+            "ticket",
+            "provider",
+            "quotation"
+        ]
+    },
+    {
+        "name": "consumptiontracking",
+        "size": 1,
+        "imports": [
+            "building",
+            "manager",
+            "client"
+        ]
+    },
+    {
+        "name": "chargeDistributionRule",
+        "size": 1,
+        "imports": [
+            "distributionKey"
+        ]
+    },
+    {
+        "name": "lot",
+        "size": 1,
+        "imports": [
+            "lot",
+            "client",
+            "lease",
+            "tenure",
+            "rental_mandates",
+            "manager",
+            "prospect"
+        ]
+    },
+    {
+        "name": "lease",
+        "size": 1,
+        "imports": [
+            "lot",
+            "client"
+        ]
+    },
+    {
+        "name": "condo_mandate",
+        "size": 1,
+        "imports": [
+            "building"
+        ]
+    },
+    {
+        "name": "prospect",
+        "size": 1,
+        "imports": [
+            "client"
+        ]
+    }
+]
